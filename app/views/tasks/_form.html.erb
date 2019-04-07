@@ -9,8 +9,9 @@
         </div>
     <% end %>
     
+
     <%= f.label :status, 'ステータス' %>
-    <%= f.text_field :status %>
+    <%= f.select(:status, [['準備中'],['進行中'], ['完了']]) %>
     
     <%= f.label :content, 'タスク' %>
     <%= f.text_field :content %>
