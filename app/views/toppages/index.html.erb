@@ -2,7 +2,7 @@
 
 <%#----///ログインしていたらユーザのタスク一覧を表示する///----%>
 <% if logged_in? %>
- <%= current_user.name %>さんのタスク一覧
+ <h1><%= current_user.name %>さんのタスク一覧</h1>
  
  <table class="table table-striped table-hover">
     <thead>
@@ -22,6 +22,8 @@
       <% end %>
     </tbody>
   </table>
+
+<%= link_to '新規タスクの投稿', new_task_path, class: "btn btn-info" %>
   
 <%#----///ログインていなかったらトップページ・新規登録ボタン///----%>
 <% else %>

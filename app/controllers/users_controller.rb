@@ -21,10 +21,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    
     if @user.save
+      log_in @user
       flash[:success] = 'ユーザを登録しました'
-      redirect_to @user
+      redirect_to :root
     else
       flash.now[:danger] = 'ユーザ登録に失敗しました'
       render :new
