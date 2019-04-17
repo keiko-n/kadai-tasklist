@@ -1,8 +1,11 @@
+<%#---///新規タスクとタスクの編集フォーム///---%>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-lg-offset-3 col-lg-6">
         
 <%= form_for (task) do |f| %>
+    <%#---エラーメッセージ---%>
     <% if task.errors.any? %>
      <div class="alert alert-warning">
         <div id="error_explanation">
@@ -20,8 +23,6 @@
     <%= f.select(:status, [['準備中'],['進行中'], ['完了']], {}, class: "form-control") %>
     </div>
     
-
-
     <div class="form-group">
     <%= f.label :content, 'タスク' %>
     <%= f.text_field :content, class: 'form-control' %>

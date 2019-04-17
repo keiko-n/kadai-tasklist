@@ -1,3 +1,4 @@
+<%#---////ヘッダー部分////---%>
 <header>
   <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
@@ -12,7 +13,25 @@
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to  '新規タスクの投稿', new_task_path %></li>
+         
+  <%#---////もしログインしていたら////---%>
+          <% if logged_in? %>
+            <%#---いらない？　<li><%= link_to 'Users', users_path %//// ---%>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'My profile', user_path(current_user) %></li>
+                <li role="separator" class="divider"></li>
+                <li><%= link_to 'Logout' , logout_path, method: :delete %></li>
+              </ul>
+            </li>
+   
+   <%#---////ログインしていなかったら////---%>       
+          <% else %>
+            <li><%= link_to 'Signup', signup_path %></li>
+            <li><%= link_to 'Login', login_path %></li>
+          <% end %>
+          
         </ul>
       </div>
     </div>
