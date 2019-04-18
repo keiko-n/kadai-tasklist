@@ -6,17 +6,7 @@
         
 <%= form_for (task) do |f| %>
     <%#---エラーメッセージ---%>
-    <% if task.errors.any? %>
-     <div class="alert alert-warning">
-        <div id="error_explanation">
-            <ul>
-                <% task.errors.full_messages.each do |task| %>
-                <li><%= task %></li>
-                <% end %>
-            </ul>
-        </div>
-    </div>
-    <% end %>
+    <%= render 'layouts/error_tasks', model: f.object %>
     
     <div class="form-group">
     <%= f.label :status, 'ステータス' %>
